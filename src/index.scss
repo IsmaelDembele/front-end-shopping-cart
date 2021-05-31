@@ -1,0 +1,96 @@
+/*
+=============== 
+Variables
+===============
+*/
+//Colors
+$header_bg_color: #4a08d9;
+$header_color: #ffffff;
+$header_shadow: #cccccc;
+$bg-color: #eaf6ff;
+$arrows_color: #4a08d9;
+
+//fonts
+$body_font: 'Montserrat', sans-serif;
+$header_font: 'McLaren', cursive;
+$title_font: 'Montserrat', sans-serif;
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: $body_font;
+}
+
+.header {
+  display: flex;
+  background-color: $header_bg_color;
+  color: $header_color;
+  font-family: $header_font;
+  font-weight: 200;
+  box-shadow: 0 0 0.625rem 0 $header_shadow;
+
+  h1 {
+    padding: 1rem 12.5rem;
+    flex: 1;
+  }
+
+  .cart {
+    margin: 1.5rem 12.5rem 0 0;
+  }
+}
+
+.title {
+  width: 16rem;
+  font-family: $title_font;
+  font-weight: 400;
+  margin: 5px auto;
+}
+
+.item {
+  display: flex;
+  margin: 15px auto;
+  width: 65rem;
+  height: 8rem;
+  background-color: white;
+  border-radius: 7px;
+  padding: 3px;
+
+  .img {
+    height: 100px;
+    width: 100px;
+    margin: 10px 0 10px 0;
+    background: url('./images/galaxy_s21.jpg');
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+  }
+  .description {
+    flex: 1;
+    margin-left: 30px;
+    line-height: 1.5;
+    .delete {
+      margin-top: 40px;
+    }
+  }
+
+  .qty {
+    display: flex;
+    flex-direction: column;
+    margin: auto 10px auto 3px;
+
+    .up_arrow,
+    .down_arrow {
+      color: $arrows_color;
+    }
+
+    .number {
+      text-align: center;
+    }
+  }
+}
