@@ -2,8 +2,6 @@ import React from 'react';
 import numeral from 'numeral';
 
 const Total = props => {
-  //   const total = props.total;
-
   //put number to money-string
   const total = numeral(props.total).format('$0,0.00');
 

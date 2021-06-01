@@ -3,15 +3,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const Item = props => {
-  const { name, url, price } = props.item;
-
-  const addOneItem = e => {
-    console.log('add');
-  };
-
-  const removeOneItem = e => {
-    console.log('remove');
-  };
+  const { name, url, price, id, qty } = props.item;
 
   return (
     <div className='item'>
@@ -23,11 +15,11 @@ const Item = props => {
         <p className='delete'>delete</p>
       </div>
       <div className='qty'>
-        <ArrowDropUpIcon className='up_arrow' onClick={e => addOneItem(e)} />
-        <p className='number'>1</p>
+        <ArrowDropUpIcon className='up_arrow' onClick={e => props.addQty(id)} />
+        <p className='number'>{qty}</p>
         <ArrowDropDownIcon
           className='down_arrow'
-          onClick={e => removeOneItem(e)}
+          onClick={e => props.removeQty(id)}
         />
       </div>
     </div>
