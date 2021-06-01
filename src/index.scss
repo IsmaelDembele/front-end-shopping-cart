@@ -9,11 +9,13 @@ $header_color: #ffffff;
 $header_shadow: #cccccc;
 $bg-color: #eaf6ff;
 $arrows_color: #4a08d9;
-
 //fonts
 $body_font: 'Montserrat', sans-serif;
 $header_font: 'McLaren', cursive;
 $title_font: 'Montserrat', sans-serif;
+//image size
+$img_height: 90px;
+$img_width: 90px;
 
 *,
 ::after,
@@ -57,17 +59,17 @@ body {
   display: flex;
   margin: 15px auto;
   width: 65rem;
-  height: 8rem;
+  height: 7rem;
   background-color: white;
   border-radius: 7px;
   padding: 3px;
 
   .img {
-    height: 100px;
-    width: 100px;
+    height: $img_height;
+    width: $img_width;
     margin: 10px 0 10px 0;
     background: url('./images/galaxy_s21.jpg');
-    background-size: 100px 100px;
+    background-size: $img_height $img_width;
     background-repeat: no-repeat;
   }
   .description {
@@ -75,7 +77,7 @@ body {
     margin-left: 30px;
     line-height: 1.5;
     .delete {
-      margin-top: 40px;
+      margin-top: 32px;
     }
   }
 
