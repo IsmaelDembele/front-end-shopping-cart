@@ -5,6 +5,7 @@ const Header = () => {
   return (
     <div className='header'>
       <h1>IDCom</h1>
+      <p className='item_number'>5</p>
       <ShoppingCartIcon className='cart' />
     </div>
   );
