@@ -14,8 +14,8 @@ $body_font: 'Montserrat', sans-serif;
 $header_font: 'McLaren', cursive;
 $title_font: 'Montserrat', sans-serif;
 //image size
-$img_height: 90px;
-$img_width: 90px;
+$img_height: 95px;
+$img_width: 95px;
 
 *,
 ::after,
@@ -64,14 +64,12 @@ body {
   border-radius: 7px;
   padding: 3px;
 
-  .img {
+  img {
     height: $img_height;
     width: $img_width;
     margin: 10px 0 10px 0;
-    background: url('./images/galaxy_s21.jpg');
-    background-size: $img_height $img_width;
-    background-repeat: no-repeat;
   }
+
   .description {
     flex: 1;
     margin-left: 30px;

@@ -2,13 +2,16 @@ import React from 'react';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-const Item = () => {
+const Item = props => {
+  const {name,url,price} = props.item;
+
   return (
     <div className='item'>
-      <div className='img'></div>
+      <img src={url} alt='gkg' />
+
       <div className='description'>
-        <p>name</p>
-        <p>$price</p>
+        <p>{name}</p>
+        <p>{price}</p>
         <p className='delete'>delete</p>
       </div>
       <div className='qty'>

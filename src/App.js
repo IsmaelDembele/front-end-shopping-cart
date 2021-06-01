@@ -2,17 +2,16 @@ import React from 'react';
 import Header from './components/Header';
 import Title from './components/Title';
 import Item from './components/Item';
+import { listItem } from './data';
 
 const App = () => {
   return (
     <>
       <Header />
       <Title />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {listItem.map(item => (
+        <Item key={item.id} item={item} />
+      ))}
     </>
   );
 };
