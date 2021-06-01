@@ -9,6 +9,7 @@ $header_color: #ffffff;
 $header_shadow: #cccccc;
 $bg-color: #eaf6ff;
 $arrows_color: #4a08d9;
+$item_number_color: #ffffff;
 //fonts
 $body_font: 'Montserrat', sans-serif;
 $header_font: 'McLaren', cursive;
@@ -53,8 +54,9 @@ body {
     position: relative;
     left: 15px;
     top: 12px;
-    color: white;
-    font-size: 11px;
+    color: $item_number_color;
+    font-size: 12px;
+    font-weight: bold;
   }
 }
 
@@ -97,6 +99,7 @@ body {
     .up_arrow,
     .down_arrow {
       color: $arrows_color;
+      cursor: pointer;
     }
 
     .number {
@@ -107,8 +110,7 @@ body {
 
 hr {
   width: $body_width;
-  margin: 0 auto 5px auto;
-  color: red;
+  margin: 0 auto 10px auto;
   border: none;
   border-bottom: 1px solid $header_bg_color;
 }

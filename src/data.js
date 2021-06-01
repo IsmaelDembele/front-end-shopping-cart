@@ -1,4 +1,4 @@
-export const listItem = [
+export const data = [
   {
     id: 1,
     name: 'New Precision 7550 AI-Ready Data Science Workstations Laptop',
