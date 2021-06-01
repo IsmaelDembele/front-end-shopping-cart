@@ -16,6 +16,7 @@ $title_font: 'Montserrat', sans-serif;
 //image size
 $img_height: 95px;
 $img_width: 95px;
+$body_width: 65rem;
 
 *,
 ::after,
@@ -67,7 +68,7 @@ body {
 .item {
   display: flex;
   margin: 15px auto;
-  width: 65rem;
+  width: $body_width;
   height: 7rem;
   background-color: white;
   border-radius: 7px;
@@ -101,5 +102,28 @@ body {
     .number {
       text-align: center;
     }
+  }
+}
+
+hr {
+  width: $body_width;
+  margin: 0 auto 5px auto;
+  color: red;
+  border: none;
+  border-bottom: 1px solid $header_bg_color;
+}
+
+.total {
+  display: flex;
+  width: $body_width;
+  margin: 0 auto 10px auto;
+  font-weight: 700;
+
+  &_letter {
+    flex: 1;
+  }
+
+  &_number {
+    margin: 0 10px 10px 0;
   }
 }
