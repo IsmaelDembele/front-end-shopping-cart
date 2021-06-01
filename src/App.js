@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import numeral from 'numeral';
 import Header from './components/Header';
 import Title from './components/Title';
 import Item from './components/Item';
 import Total from './components/Total';
 import { data } from './data';
-import { totalQuantity } from './helper';
+import { totalQuantity, totalPrice, resetId } from './helper';
 
 const App = () => {
   const [total, setTotal] = useState(0);
@@ -13,28 +12,33 @@ const App = () => {
   const [totalItemNumber, setTotalItemNumber] = useState(0);
 
   useEffect(() => {
-    let myTotal = 0;
-    listItem.forEach(item => {
-      //put string-money to number
-      const currentTotal = numeral(item.price);
-      myTotal += currentTotal._value;
-      setTotalItemNumber(totalQuantity(listItem));
-    });
-
-    setTotal(myTotal);
+    setTotal(totalPrice(listItem));
+    setTotalItemNumber(totalQuantity(listItem));
   }, [listItem]);
 
-  const addOneItem = (id) => {
-    // console.log(e.target, id);
+  const addOneItem = id => {
+    const index = id - 1;
     const tempArray = [...listItem];
-    tempArray[id - 1].qty += 1;
+    tempArray[index].qty += 1;
     setlistItem(tempArray);
   };
 
-  const removeOneItem = (id) => {
+  const removeOneItem = id => {
+    const index = id - 1;
     const tempArray = [...listItem];
     tempArray[id - 1].qty -= 1;
     setlistItem(tempArray);
+    listItem[index].qty === 0 && deleteItem(id);
+  };
+
+  const deleteItem = id => {
+    console.log(id);
+    const newlistItem = listItem.filter(item => {
+      return id !== item.id;
+    });
+
+    resetId(newlistItem);
+    setlistItem(newlistItem);
   };
 
   return (
@@ -45,8 +49,9 @@ const App = () => {
         <Item
           key={item.id}
           item={item}
-          addQty={(id) => addOneItem(id)}
-          removeQty={(id) => removeOneItem(id)}
+          addQty={id => addOneItem(id)}
+          removeQty={id => removeOneItem(id)}
+          _delete={id => deleteItem(id)}
         />
       ))}
       <Total total={total} />

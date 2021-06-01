@@ -88,6 +88,12 @@ body {
     line-height: 1.5;
     .delete {
       margin-top: 32px;
+      color: $header_bg_color;
+      cursor: pointer;
+    }
+
+    .price{
+      font-weight: 700;
     }
   }
 

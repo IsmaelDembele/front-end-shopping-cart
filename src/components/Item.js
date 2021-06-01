@@ -5,21 +5,28 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 const Item = props => {
   const { name, url, price, id, qty } = props.item;
 
+  
+
   return (
     <div className='item'>
       <img src={url} alt='gkg' />
 
       <div className='description'>
         <p>{name}</p>
-        <p>{price}</p>
-        <p className='delete'>delete</p>
+        <p className='price'>{price}</p>
+        <p className='delete' onClick={() => props._delete(id)}>
+          delete
+        </p>
       </div>
       <div className='qty'>
-        <ArrowDropUpIcon className='up_arrow' onClick={e => props.addQty(id)} />
+        <ArrowDropUpIcon
+          className='up_arrow'
+          onClick={() => props.addQty(id)}
+        />
         <p className='number'>{qty}</p>
         <ArrowDropDownIcon
           className='down_arrow'
-          onClick={e => props.removeQty(id)}
+          onClick={() => props.removeQty(id)}
         />
       </div>
     </div>
