@@ -1,60 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Header from './components/Header';
 import Title from './components/Title';
 import Item from './components/Item';
 import Total from './components/Total';
 import { data } from './data';
-import { totalQuantity, totalPrice, resetId } from './helper';
+import { reducer } from './components/reducer';
+
+const defaultState = {
+  total: 0,
+  listItem: data,
+  totalItemNumber: 0,
+};
 
 const App = () => {
-  const [total, setTotal] = useState(0);
-  const [listItem, setlistItem] = useState(data);
-  const [totalItemNumber, setTotalItemNumber] = useState(0);
+  const [state, dispatch] = useReducer(reducer, defaultState);
 
   useEffect(() => {
-    setTotal(totalPrice(listItem));
-    setTotalItemNumber(totalQuantity(listItem));
-  }, [listItem]);
+    dispatch({ type: 'TOTAL_PRICE' });
+    dispatch({ type: 'TOTAL_ITEM_NUMBER' });
+  }, [state.listItem]);
 
-  const addOneItem = id => {
-    const index = id - 1;
-    const tempArray = [...listItem];
-    tempArray[index].qty += 1;
-    setlistItem(tempArray);
+  const addOneToQty = id => {
+    dispatch({ type: 'ADD_ONE_QTY', payload: id });
   };
 
-  const removeOneItem = id => {
-    const index = id - 1;
-    const tempArray = [...listItem];
-    tempArray[id - 1].qty -= 1;
-    setlistItem(tempArray);
-    listItem[index].qty === 0 && deleteItem(id);
+  const removeOneFromQty = id => {
+    dispatch({ type: 'REMOVE_ONE_FROM_QTY', payload: id });
   };
 
   const deleteItem = id => {
-    console.log(id);
-    const newlistItem = listItem.filter(item => {
-      return id !== item.id;
-    });
-
-    resetId(newlistItem);
-    setlistItem(newlistItem);
+    dispatch({ type: 'DELETE_ITEM', payload: id });
   };
 
   return (
     <>
-      <Header itemNumber={totalItemNumber} />
+      <Header itemNumber={state.totalItemNumber} />
       <Title />
-      {listItem.map(item => (
+      {state.listItem.map(item => (
         <Item
           key={item.id}
           item={item}
-          addQty={id => addOneItem(id)}
-          removeQty={id => removeOneItem(id)}
+          addQty={id => addOneToQty(id)}
+          removeQty={id => removeOneFromQty(id)}
           _delete={id => deleteItem(id)}
         />
       ))}
-      <Total total={total} />
+      <Total total={state.total} />
     </>
   );
 };
